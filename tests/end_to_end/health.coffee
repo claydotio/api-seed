@@ -1,6 +1,5 @@
 Flare = require 'flare-gun'
 
-config = require '../../config'
 server = require '../../index'
 flare = new Flare().express(server)
 
