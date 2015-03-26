@@ -360,6 +360,71 @@
       "from": "loglevel@",
       "resolved": "https://registry.npmjs.org/loglevel/-/loglevel-1.2.0.tgz"
     },
+    "nock": {
+      "version": "1.2.1",
+      "from": "nock@",
+      "resolved": "https://registry.npmjs.org/nock/-/nock-1.2.1.tgz",
+      "dependencies": {
+        "chai": {
+          "version": "1.10.0",
+          "from": "chai@^1.9.2",
+          "resolved": "https://registry.npmjs.org/chai/-/chai-1.10.0.tgz",
+          "dependencies": {
+            "assertion-error": {
+              "version": "1.0.0",
+              "from": "assertion-error@1.0.0",
+              "resolved": "https://registry.npmjs.org/assertion-error/-/assertion-error-1.0.0.tgz"
+            },
+            "deep-eql": {
+              "version": "0.1.3",
+              "from": "deep-eql@0.1.3",
+              "resolved": "https://registry.npmjs.org/deep-eql/-/deep-eql-0.1.3.tgz",
+              "dependencies": {
+                "type-detect": {
+                  "version": "0.1.1",
+                  "from": "type-detect@0.1.1",
+                  "resolved": "https://registry.npmjs.org/type-detect/-/type-detect-0.1.1.tgz"
+                }
+              }
+            }
+          }
+        },
+        "debug": {
+          "version": "1.0.4",
+          "from": "debug@^1.0.4",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-1.0.4.tgz",
+          "dependencies": {
+            "ms": {
+              "version": "0.6.2",
+              "from": "ms@0.6.2",
+              "resolved": "https://registry.npmjs.org/ms/-/ms-0.6.2.tgz"
+            }
+          }
+        },
+        "lodash": {
+          "version": "2.4.1",
+          "from": "lodash@2.4.1",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz"
+        },
+        "mkdirp": {
+          "version": "0.5.0",
+          "from": "mkdirp@^0.5.0",
+          "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.0.tgz",
+          "dependencies": {
+            "minimist": {
+              "version": "0.0.8",
+              "from": "minimist@0.0.8",
+              "resolved": "https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz"
+            }
+          }
+        },
+        "propagate": {
+          "version": "0.3.1",
+          "from": "propagate@0.3.x",
+          "resolved": "https://registry.npmjs.org/propagate/-/propagate-0.3.1.tgz"
+        }
+      }
+    },
     "pm2": {
       "version": "0.12.9",
       "from": "pm2@",
