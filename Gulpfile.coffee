@@ -28,7 +28,7 @@ gulp.task 'watch-test', shell.task [
 
 gulp.task 'test', (if process.env.LINT is '1' then ['lint'] else []), ->
   gulp.src paths.tests
-  .pipe mocha(timeout: 5000)
+  .pipe mocha(timeout: 5000, useColors: true)
   .once 'end', -> process.exit()
 
 gulp.task 'lint', ->
