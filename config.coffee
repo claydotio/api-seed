@@ -26,7 +26,7 @@ defaults =
 config = defaultsDeep
   DEBUG: if env.DEBUG then env.DEBUG is '1' else undefined
   ENV: env.NODE_ENV
-  PORT: env.PORT
+  PORT: env.API_PORT or env.PORT
 , defaults
 
 missingConfig = getDeepUndefinedKeys config
