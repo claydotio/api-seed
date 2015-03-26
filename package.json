@@ -14,24 +14,24 @@
   },
   "author": "",
   "dependencies": {
-    "body-parser": "1.12.0",
+    "body-parser": "^1.12.2",
     "clay-coffeescript-style-guide": "^1.0.0",
-    "coffee-script": "1.9.1",
-    "cors": "2.5.3",
-    "express": "4.12.2",
-    "joi": "4.7.0",
-    "lodash": "2.4.1",
-    "loglevel": "1.1.0",
-    "pm2": "0.12.7",
+    "coffee-script": "^1.9.1",
+    "cors": "^2.5.3",
+    "express": "^4.12.3",
+    "joi": "^6.0.8",
+    "lodash": "^3.6.0",
+    "loglevel": "^1.2.0",
+    "pm2": "^0.12.9",
     "promise-router": "^0.1.0"
   },
   "devDependencies": {
-    "clay-chai": "0.0.2",
-    "flare-gun": "0.5.7",
-    "gulp": "3.8.7",
-    "gulp-coffeelint": "0.3.3",
-    "gulp-mocha": "0.5.2",
-    "gulp-nodemon": "1.0.4",
-    "gulp-shell": "0.4.0"
+    "clay-chai": "0.0.3",
+    "flare-gun": "^0.5.7",
+    "gulp": "^3.8.11",
+    "gulp-coffeelint": "^0.4.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-nodemon": "^2.0.2",
+    "gulp-shell": "^0.4.0"
   }
 }
