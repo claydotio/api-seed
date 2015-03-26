@@ -19,7 +19,7 @@ gulp.task 'default', ['server']
 gulp.task 'server', ->
   nodemon script: paths.serverBin, ext: 'coffee'
 
-gulp.task 'watch', ['server'], ->
+gulp.task 'watch', ->
   gulp.watch paths.coffee, ['watch-test']
 
 gulp.task 'watch-test', shell.task [
