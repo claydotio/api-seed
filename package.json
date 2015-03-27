@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "clay-chai": "0.0.3",
-    "flare-gun": "^0.5.7",
+    "flare-gun": "^0.5.8",
     "gulp": "^3.8.11",
     "gulp-coffeelint": "^0.4.0",
     "gulp-mocha": "^2.0.0",
