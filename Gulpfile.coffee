@@ -2,6 +2,7 @@ gulp = require 'gulp'
 mocha = require 'gulp-mocha'
 shell = require 'gulp-shell'
 nodemon = require 'gulp-nodemon'
+istanbul = require 'gulp-coffee-istanbul'
 coffeelint = require 'gulp-coffeelint'
 clayLintConfig = require 'clay-coffeescript-style-guide'
 
@@ -27,9 +28,19 @@ gulp.task 'watch-test', shell.task [
 ]
 
 gulp.task 'test', (if process.env.LINT is '1' then ['lint'] else []), ->
-  gulp.src paths.tests
-  .pipe mocha(timeout: 5000, useColors: true)
-  .once 'end', -> process.exit()
+  if process.env.COVERAGE is '1'
+    gulp.src paths.coffee
+    .pipe istanbul includeUntested: true
+    .pipe istanbul.hookRequire()
+    .on 'finish', ->
+      gulp.src paths.tests
+      .pipe mocha(timeout: 5000, useColors: true)
+      .pipe istanbul.writeReports()
+      .once 'end', -> process.exit()
+  else
+    gulp.src paths.tests
+    .pipe mocha(timeout: 5000, useColors: true)
+    .once 'end', -> process.exit()
 
 gulp.task 'lint', ->
   gulp.src paths.coffee

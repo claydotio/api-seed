@@ -20,6 +20,7 @@
     "cors": "^2.5.3",
     "express": "^4.12.3",
     "flare-gun": "^0.5.8",
+    "gulp-coffee-istanbul": "^0.7.0",
     "joi": "^6.0.8",
     "lodash": "^3.6.0",
     "loglevel": "^1.2.0",
