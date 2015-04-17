@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.coffee",
   "directories": {
-    "test": "tests"
+    "test": "test"
   },
   "scripts": {
     "test": "./bin/test.sh",

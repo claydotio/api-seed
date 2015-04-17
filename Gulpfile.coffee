@@ -8,7 +8,7 @@ clayLintConfig = require 'clay-coffeescript-style-guide'
 
 paths =
   serverBin: './bin/server.coffee'
-  tests: './tests/**/*.coffee'
+  test: './test/**/*.coffee'
   coffee: [
     './**/*.coffee'
     '!./node_modules/**/*'
@@ -33,12 +33,12 @@ gulp.task 'test', (if process.env.LINT is '1' then ['lint'] else []), ->
     .pipe istanbul includeUntested: true
     .pipe istanbul.hookRequire()
     .on 'finish', ->
-      gulp.src paths.tests
+      gulp.src paths.test
       .pipe mocha(timeout: 5000, useColors: true)
       .pipe istanbul.writeReports()
       .once 'end', -> process.exit()
   else
-    gulp.src paths.tests
+    gulp.src paths.test
     .pipe mocha(timeout: 5000, useColors: true)
     .once 'end', -> process.exit()
 
