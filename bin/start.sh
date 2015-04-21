@@ -1,9 +1,16 @@
 #!/bin/sh
+[ -z "$LOG_DIR" ] && export LOG_DIR=/tmp/api_seed
+[ -z "$LOG_NAME" ] && export LOG_NAME=api_seed
 export NODE_ENV=production
 
-./node_modules/pm2/bin/pm2 start ./bin/server.coffee \
+mkdir -p $LOG_DIR
+
+./node_modules/pm2/bin/pm2 \
+  start ./bin/server.coffee \
   -i 0 \
-  --name api \
+  --name $LOG_NAME \
+  --merge-logs \
   --no-daemon \
-  -o /var/log/acme/api.log \
-  -e /var/log/acme/api.error.log;
+  -o $LOG_DIR/$LOG_NAME.log \
+  -e $LOG_DIR/$LOG_NAME.error.log \
+  2>&1 | tee $LOG_DIR/$LOG_NAME.pm2.log

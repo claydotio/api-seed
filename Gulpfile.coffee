@@ -15,9 +15,9 @@ paths =
   ]
 
 
-gulp.task 'default', ['server']
+gulp.task 'default', ['dev']
 
-gulp.task 'server', ->
+gulp.task 'dev', ->
   nodemon script: paths.serverBin, ext: 'coffee'
 
 gulp.task 'watch', ->

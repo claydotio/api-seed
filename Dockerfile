@@ -1,15 +1,16 @@
 FROM node:0.10
 
-# Install Git
-RUN apt-get update && apt-get install -y git
+# Cache dependencies
+COPY npm-shrinkwrap.json /tmp/npm-shrinkwrap.json
+COPY package.json /tmp/package.json
+RUN mkdir -p /opt/app && \
+    cd /opt/app && \
+    cp /tmp/npm-shrinkwrap.json . && \
+    cp /tmp/package.json . && \
+    npm install --unsafe-perm
 
-# Add source
-ADD ./node_modules /opt/api/node_modules
-ADD . /opt/api
+COPY . /opt/app
 
-WORKDIR /opt/api
-
-# Install app deps
-RUN npm install
+WORKDIR /opt/app
 
 CMD ["npm", "start"]
