@@ -26,7 +26,7 @@
     "loglevel": "^1.2.0",
     "nock": "^1.2.1",
     "pm2": "^0.12.9",
-    "promise-router": "^0.1.0"
+    "promise-router": "^0.2.0"
   },
   "devDependencies": {
     "clay-chai": "0.0.3",
