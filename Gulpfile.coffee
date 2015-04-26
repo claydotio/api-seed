@@ -9,6 +9,12 @@ clayLintConfig = require 'clay-coffeescript-style-guide'
 paths =
   serverBin: './bin/server.coffee'
   test: './test/**/*.coffee'
+  cover: [
+    './**/*.coffee'
+    '!./node_modules/**/*'
+    '!./bin/**/*'
+    '!./Gulpfile.coffee'
+  ]
   coffee: [
     './**/*.coffee'
     '!./node_modules/**/*'
@@ -29,7 +35,7 @@ gulp.task 'watch-test', shell.task [
 
 gulp.task 'test', (if process.env.LINT is '1' then ['lint'] else []), ->
   if process.env.COVERAGE is '1'
-    gulp.src paths.coffee
+    gulp.src paths.cover
     .pipe istanbul includeUntested: true
     .pipe istanbul.hookRequire()
     .on 'finish', ->

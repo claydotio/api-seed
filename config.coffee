@@ -3,34 +3,30 @@ log = require 'loglevel'
 
 env = process.env
 
-defaultsDeep = _.partialRight _.merge, deep = (value, other) ->
-  _.merge value, other, deep
+assertNoneMissing = (object) ->
+  getDeepUndefinedKeys = (object, prefix = '') ->
+    _.reduce object, (missing, val, key) ->
+      if val is undefined
+        missing.concat prefix + key
+      else if _.isPlainObject val
+        missing.concat getDeepUndefinedKeys val, key + '.'
+      else
+        missing
+    , []
 
-getDeepUndefinedKeys = (object, prefix = '') ->
-  _.reduce object, (missing, val, key) ->
-    unless val?
-      return missing.concat prefix + key
-    if _.isPlainObject val
-      return missing.concat getDeepUndefinedKeys val, key + '.'
-    return missing
-  , []
+  missing = getDeepUndefinedKeys(object)
+  unless _.isEmpty missing
+    throw new Error "Config missing values for: #{missing.join(', ')}"
 
-defaults =
-  DEBUG: true
+config =
+  DEBUG: if env.DEBUG then env.DEBUG is '1' else true
+  PORT: env.API_PORT or env.PORT or 50010
+  ENV: env.NODE_ENV
   ENVS:
     DEV: 'development'
     PROD: 'production'
     TEST: 'test'
-  PORT: 50010
 
-config = defaultsDeep
-  DEBUG: if env.DEBUG then env.DEBUG is '1' else undefined
-  ENV: env.NODE_ENV
-  PORT: env.API_PORT or env.PORT
-, defaults
-
-missingConfig = getDeepUndefinedKeys config
-unless _.isEmpty missingConfig
-  log.warn 'Config missing values for:', '\n  ' + missingConfig.join '\n  '
+assertNoneMissing config
 
 module.exports = config
