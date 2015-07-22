@@ -19,7 +19,7 @@ assertNoneMissing = (object) ->
     throw new Error "Config missing values for: #{missing.join(', ')}"
 
 config =
-  DEBUG: if env.DEBUG then env.DEBUG is '1' else true
+  VERBOSE: if env.VERBOSE then env.VERBOSE is '1' else true
   PORT: env.API_PORT or env.PORT or 50010
   ENV: env.NODE_ENV
   ENVS:
