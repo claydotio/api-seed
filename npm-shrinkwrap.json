@@ -1,6 +1,11 @@
 {
   "name": "api-seed",
   "dependencies": {
+    "bluebird": {
+      "version": "2.9.34",
+      "from": "bluebird@",
+      "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-2.9.34.tgz"
+    },
     "body-parser": {
       "version": "1.13.2",
       "from": "body-parser@",
