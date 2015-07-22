@@ -17,6 +17,11 @@ class UserModel
   RETHINK_TABLES: [
     {
       NAME: USERS_TABLE
+      INDEXES: [
+        {
+          name: 'username'
+        }
+      ]
     }
   ]
 

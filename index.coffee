@@ -49,24 +49,14 @@ setup = ->
   .then ->
     Promise.map fs.readdirSync('./models'), (modelFile) ->
       model = require('./models/' + modelFile)
-      tables = model?.RETHINK_TABLES
-
-      unless tables
-        return
+      tables = model?.RETHINK_TABLES or []
 
       Promise.map tables, (table) ->
         createTableIfNotExist table.NAME
         .then ->
-          Promise.map (table.INDEXES or []), (index) ->
-            if _.isString index
-              indexName = index
-              indexOpts = {}
-              indexFn = null
-            else
-              indexName = index.name
-              indexOpts = {multi: index.multi}
-              indexFn = index.fn
-            createIndexIfNotExist table.NAME, indexName, indexFn, indexOpts
+          Promise.map (table.INDEXES or []), ({name, fn, opts}) ->
+            fn ?= null
+            createIndexIfNotExist table.NAME, name, fn, opts
 
 app = express()
 
