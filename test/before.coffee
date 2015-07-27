@@ -1,7 +1,7 @@
 log = require 'loga'
 
-config = require 'config'
-server = require 'index'
+config = require '../config'
+server = require '../index'
 
 DB = config.RETHINK.DB
 HOST = config.RETHINK.HOST
