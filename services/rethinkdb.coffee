@@ -1,5 +1,3 @@
-log = require 'loglevel'
-
 config = require '../config'
 
 DB = config.RETHINK.DB

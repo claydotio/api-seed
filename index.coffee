@@ -1,7 +1,6 @@
 cors = require 'cors'
 express = require 'express'
 bodyParser = require 'body-parser'
-log = require 'loglevel'
 fs = require 'fs'
 Promise = require 'bluebird'
 _ = require 'lodash'
@@ -9,8 +8,6 @@ _ = require 'lodash'
 config = require './config'
 routes = require './routes'
 r = require './services/rethinkdb'
-
-log.enableAll()
 
 # Setup rethinkdb
 createDatabaseIfNotExist = (dbName) ->

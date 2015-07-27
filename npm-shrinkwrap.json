@@ -1,6 +1,10 @@
 {
   "name": "api-seed",
   "dependencies": {
+    "assert-none-missing": {
+      "version": "0.1.0",
+      "from": "assert-none-missing@"
+    },
     "bluebird": {
       "version": "2.9.34",
       "from": "bluebird@",
@@ -401,10 +405,14 @@
       "from": "lodash@",
       "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.0.tgz"
     },
-    "loglevel": {
-      "version": "1.3.1",
-      "from": "loglevel@",
-      "resolved": "https://registry.npmjs.org/loglevel/-/loglevel-1.3.1.tgz"
+    "loga": {
+      "version": "0.1.1",
+      "from": "loga@"
+    },
+    "node-uuid": {
+      "version": "1.4.3",
+      "from": "node-uuid@",
+      "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.3.tgz"
     },
     "pm2": {
       "version": "0.14.3",
@@ -1712,14 +1720,10 @@
       }
     },
     "promise-router": {
-      "version": "0.2.0",
-      "from": "promise-router@",
+      "version": "0.2.1",
+      "from": "promise-router@0.2.1",
+      "resolved": "https://registry.npmjs.org/promise-router/-/promise-router-0.2.1.tgz",
       "dependencies": {
-        "bluebird": {
-          "version": "2.9.34",
-          "from": "bluebird@^2.9.14",
-          "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-2.9.34.tgz"
-        },
         "clay-chai": {
           "version": "0.0.3",
           "from": "clay-chai@0.0.3",
@@ -1752,6 +1756,11 @@
           }
         }
       }
+    },
+    "rethinkdbdash": {
+      "version": "2.0.17",
+      "from": "rethinkdbdash@",
+      "resolved": "https://registry.npmjs.org/rethinkdbdash/-/rethinkdbdash-2.0.17.tgz"
     }
   }
 }

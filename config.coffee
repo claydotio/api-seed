@@ -1,5 +1,4 @@
 _ = require 'lodash'
-log = require 'loglevel'
 assertNoneMissing = require 'assert-none-missing'
 
 env = process.env

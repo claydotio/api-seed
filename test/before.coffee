@@ -1,4 +1,4 @@
-log = require 'loglevel'
+log = require 'loga'
 nock = require 'nock'
 
 config = require 'config'
@@ -15,7 +15,7 @@ before ->
   nock.enableNetConnect('0.0.0.0')
 
   unless config.VERBOSE
-    log.disableAll()
+    log.level = null
 
   r.dbList()
   .contains DB
