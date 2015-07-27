@@ -1,5 +1,4 @@
 log = require 'loga'
-nock = require 'nock'
 
 config = require 'config'
 server = require 'index'
@@ -12,8 +11,6 @@ r = require('rethinkdbdash')
   db: DB
 
 before ->
-  nock.enableNetConnect('0.0.0.0')
-
   unless config.VERBOSE
     log.level = null
 
