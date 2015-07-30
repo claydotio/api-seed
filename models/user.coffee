@@ -8,10 +8,10 @@ config = require '../config'
 USERS_TABLE = 'users'
 
 defaultUser = (user) ->
-  _.defaults user, {
+  _.assign {
     id: uuid.v4()
     username: null
-  }
+  }, user
 
 class UserModel
   RETHINK_TABLES: [
