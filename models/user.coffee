@@ -8,6 +8,9 @@ config = require '../config'
 USERS_TABLE = 'users'
 
 defaultUser = (user) ->
+  unless user?
+    return null
+
   _.assign {
     id: uuid.v4()
     username: null
