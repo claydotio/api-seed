@@ -54,6 +54,8 @@ setup = ->
           Promise.map (table.INDEXES or []), ({name, fn, opts}) ->
             fn ?= null
             createIndexIfNotExist table.NAME, name, fn, opts
+        .then ->
+          r.table(table.NAME).indexWait().run()
 
 app = express()
 
