@@ -24,7 +24,6 @@
     "lodash": "^3.10.0",
     "loga": "^0.1.1",
     "node-uuid": "^1.4.3",
-    "pm2": "^0.14.3",
     "promise-router": "^0.2.1",
     "rethinkdbdash": "^2.0.17"
   },
