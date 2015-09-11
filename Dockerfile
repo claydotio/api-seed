@@ -1,4 +1,4 @@
-FROM node:0.10
+FROM node:4.0.0
 
 # Cache dependencies
 COPY npm-shrinkwrap.json /tmp/npm-shrinkwrap.json
@@ -7,7 +7,7 @@ RUN mkdir -p /opt/app && \
     cd /opt/app && \
     cp /tmp/npm-shrinkwrap.json . && \
     cp /tmp/package.json . && \
-    npm install --unsafe-perm
+    npm install --unsafe-perm --loglevel warn
 
 COPY . /opt/app
 

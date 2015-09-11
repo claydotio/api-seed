@@ -1,9 +1,9 @@
 #!/usr/bin/env coffee
 log = require 'loga'
 
-server = require '../'
+{setup, app} = require '../'
 config = require '../config'
 
-server.setup().then ->
-  server.listen config.PORT, ->
+setup().then ->
+  app.listen config.PORT, ->
     log.info 'Listening on port %d', config.PORT
