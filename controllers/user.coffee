@@ -1,5 +1,4 @@
 _ = require 'lodash'
-Joi = require 'joi'
 router = require 'promise-router'
 
 User = require '../models/user'
@@ -9,12 +8,9 @@ class UserCtrl
   create: (req) ->
     username = req.body?.username
 
-    valid = Joi.validate {username}, {
+    router.assert {username}, {
       username: schemas.user.username
-    }, {presence: 'required'}
-
-    if valid.error
-      throw new router.Error status: 400, detail: valid.error.message
+    }
 
     User.create {username}
     .then User.sanitize(null)
@@ -33,13 +29,10 @@ class UserCtrl
     diff = req.body
 
     updateSchema =
-      username: schemas.user.username
+      username: schemas.user.username.optional()
 
     diff = _.pick diff, _.keys(updateSchema)
-    updateValid = Joi.validate diff, updateSchema
-
-    if updateValid.error
-      throw new router.Error status: 400, detail: updateValid.error.message
+    router.assert diff, updateSchema
 
     User.updateById id, diff
     .then ({replaced}) ->
