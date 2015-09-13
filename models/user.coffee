@@ -19,10 +19,13 @@ defaultUser = (user) ->
 class UserModel
   RETHINK_TABLES: [
     {
-      NAME: USERS_TABLE
-      INDEXES: [
+      name: USERS_TABLE
+      options: {}
+      indexes: [
         {
           name: 'username'
+          fn: null
+          options: {}
         }
       ]
     }

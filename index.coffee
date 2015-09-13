@@ -19,27 +19,29 @@ createDatabaseIfNotExist = (dbName) ->
       r.dbCreate dbName
   .run()
 
-createTableIfNotExist = (tableName) ->
+createTableIfNotExist = (tableName, options) ->
   r.tableList()
   .contains tableName
   .do (result) ->
     r.branch result,
       {created: 0},
-      r.tableCreate tableName
+      r.tableCreate tableName, options
   .run()
 
 createIndexIfNotExist = (tableName, indexName, indexFn, indexOpts) ->
   r.table tableName
   .indexList()
   .contains indexName
-  .do (result) ->
-    r.branch result,
-      {created: 0},
-      if indexFn
-        r.table(tableName).indexCreate indexName, indexFn, indexOpts
+  .run() # can't use r.branch() with r.row() compound indexes
+  .then (isCreated) ->
+    unless isCreated
+      (if indexFn?
+        r.table tableName
+        .indexCreate indexName, indexFn, indexOpts
       else
-        r.table(tableName).indexCreate indexName, indexOpts
-  .run()
+        r.table tableName
+        .indexCreate indexName, indexOpts
+      ).run()
 
 setup = ->
   createDatabaseIfNotExist config.RETHINK.DB
@@ -49,13 +51,13 @@ setup = ->
       tables = model?.RETHINK_TABLES or []
 
       Promise.map tables, (table) ->
-        createTableIfNotExist table.NAME
+        createTableIfNotExist table.name, table.options
         .then ->
-          Promise.map (table.INDEXES or []), ({name, fn, opts}) ->
+          Promise.map (table.indexes or []), ({name, fn, options}) ->
             fn ?= null
-            createIndexIfNotExist table.NAME, name, fn, opts
+            createIndexIfNotExist table.name, name, fn, options
         .then ->
-          r.table(table.NAME).indexWait().run()
+          r.table(table.name).indexWait().run()
 
 app = express()
 
